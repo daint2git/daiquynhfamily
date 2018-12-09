@@ -311,7 +311,6 @@ input,
 }
 .src-components-templates-PageLayout-styles__root--tChtF .src-components-templates-PageLayout-styles__content--2fCyc {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     flex: 1;
@@ -454,7 +453,7 @@ input,
 
     .src-components-molecules-ResponsiveImages-styles__root--17nC7 .src-components-molecules-ResponsiveImages-styles__row--3Hug3 .src-components-molecules-ResponsiveImages-styles__column--2c0TH>img {
         width: 100%;
-        height: auto;
+        height: 100%;
         vertical-align: middle;
         border: 1px solid rgb(221, 223, 226);
         border-radius: 2px;
