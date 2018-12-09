@@ -454,7 +454,7 @@ input,
 
     .src-components-molecules-ResponsiveImages-styles__root--17nC7 .src-components-molecules-ResponsiveImages-styles__row--3Hug3 .src-components-molecules-ResponsiveImages-styles__column--2c0TH>img {
         width: 100%;
-        height: 100%;
+        height: auto;
         vertical-align: middle;
         border: 1px solid rgb(221, 223, 226);
         border-radius: 2px;
@@ -472,10 +472,6 @@ input,
         flex: 50%;
         max-width: 50%;
       }
-
-        .src-components-molecules-ResponsiveImages-styles__root--17nC7 .src-components-molecules-ResponsiveImages-styles__row--3Hug3 .src-components-molecules-ResponsiveImages-styles__column--2c0TH>img {
-          height: 300px;
-        }
     }
 
     @media screen and (min-width: 1025px) {
@@ -483,10 +479,6 @@ input,
         flex: 25%;
         max-width: 25%;
       }
-
-        .src-components-molecules-ResponsiveImages-styles__root--17nC7 .src-components-molecules-ResponsiveImages-styles__row--3Hug3 .src-components-molecules-ResponsiveImages-styles__column--2c0TH>img {
-          height: 250px;
-        }
     }
 /**
  * Flat UI Color
