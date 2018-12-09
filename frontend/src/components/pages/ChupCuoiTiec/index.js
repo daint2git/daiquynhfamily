@@ -1,7 +1,7 @@
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchList, fetchNextList } from 'redux/reducers/chup'
+import { fetchList, fetchNextList } from 'redux/reducers/chupcuoitiec'
 import asyncLoader from 'utils/hoc/asyncLoader'
 import Button from 'components/atoms/Button'
 import PageLayout from 'components/templates/PageLayout'
@@ -14,10 +14,7 @@ const Page = ({ list, fetchNextList: fetchNextListAct, nextPageToken }) => (
       trái tim, làm người ta nhìn thấy mọi vật tươi đẹp hơn
     </h1>
     <ResponsiveImages list={list} />
-    <Button
-      style={{ width: '50%' }}
-      onClick={() => fetchNextListAct('chupcuoile', { nextPageToken })}
-    >
+    <Button style={{ width: '50%' }} onClick={() => fetchNextListAct({ nextPageToken })}>
       Load more
     </Button>
   </PageLayout>
@@ -25,8 +22,11 @@ const Page = ({ list, fetchNextList: fetchNextListAct, nextPageToken }) => (
 
 export default compose(
   connect(
-    state => ({ list: state.chup.list }),
+    state => ({
+      list: state.chupcuoitiec.list,
+      nextPageToken: state.chupcuoitiec.nextPageToken,
+    }),
     dispatch => bindActionCreators({ fetchList, fetchNextList }, dispatch),
   ),
-  asyncLoader(props => props.fetchList('chupcuoitiec')),
+  asyncLoader(props => props.fetchList()),
 )(Page)
