@@ -1,0 +1,40 @@
+@import 'utils/colors.scss';
+@import 'utils/variables.scss';
+
+.root {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 4em;
+
+    & > h1 {
+      text-indent: 0.5em;
+      font-size: calc($fs_large + 2vmin);
+      padding: 1em;
+    }
+
+    & > p {
+      text-indent: 0.5em;
+      padding: 0.5em 0;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .content {
+      margin-left: 4em;
+      margin-top: 0em;
+    }
+  }
+
+  @media screen and (min-width: 1025px) {
+    .content {
+      margin-left: 15em;
+      margin-top: 0em;
+    }
+  }
+}
