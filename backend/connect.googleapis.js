@@ -85,7 +85,7 @@ function listFiles(params, callback) {
     drive.files.list(
       {
         q: `"${folderId}" in parents`,
-        pageSize: 10,
+        pageSize: 12,
         pageToken: pageToken || null,
         fields: 'files(name, webContentLink), nextPageToken',
       },
