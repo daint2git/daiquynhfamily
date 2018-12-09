@@ -11,15 +11,15 @@ app.use(cors())
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, '../frontend/build')))
 
-app.get('/api/chupcuoile', (req, res) => {
-  const folderId = '1X4vLvMCyXBM_iVQKOWg8m_y4JvwwPxB5'
-  getFiles(folderId, files => res.send(files))
-})
+const handleClientCall = folderId => (req, res) => {
+  const params = { folderId }
+  const { nextPage, nextPageToken } = req.query
+  if (nextPage) params.pageToken = nextPageToken
+  getFiles(params, (files, nextPageToken) => res.send({ files, nextPageToken }))
+}
 
-app.get('/api/chupcuoitiec', (req, res) => {
-  const folderId = '1KU7pMSg8VnQdQ7bUw5MvEZwckoVIhyB-'
-  getFiles(folderId, files => res.send(files))
-})
+app.get('/api/chupcuoile', handleClientCall('1X4vLvMCyXBM_iVQKOWg8m_y4JvwwPxB5'))
+app.get('/api/chupcuoitiec', handleClientCall('1KU7pMSg8VnQdQ7bUw5MvEZwckoVIhyB-'))
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {

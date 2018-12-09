@@ -17,11 +17,11 @@ const TOKEN_PATH = path.join(__dirname + '/token.json')
 //   authorize(JSON.parse(content), listFiles)
 // })
 
-module.exports.getFiles = (folderId, callback) => {
+module.exports.getFiles = (params, callback) => {
   fs.readFile(path.join(__dirname + '/credentials.json'), (err, content) => {
     if (err) return console.log('Error loading client secret file:', err)
     // Authorize a client with credentials, then call the Google Drive API.
-    authorize(JSON.parse(content), listFiles(folderId, callback))
+    authorize(JSON.parse(content), listFiles(params, callback))
   })
 }
 
@@ -78,17 +78,20 @@ function getAccessToken(oAuth2Client, callback) {
  * Lists the names and IDs of up to 10 files.
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
-function listFiles(folderId, callback) {
+function listFiles(params, callback) {
   return function(auth) {
     const drive = google.drive({ version: 'v3', auth })
+    const { folderId, pageToken } = params
     drive.files.list(
       {
         q: `"${folderId}" in parents`,
-        pageSize: 5,
-        fields: 'nextPageToken, files(name, webContentLink)',
+        pageSize: 10,
+        pageToken: pageToken || null,
+        fields: 'files(name, webContentLink), nextPageToken',
       },
       (err, res) => {
         if (err) return console.log('The API returned an error: ' + err)
+        const nextPageToken = res.data.nextPageToken
         const files = res.data.files
         const result = []
         if (files.length) {
@@ -98,9 +101,9 @@ function listFiles(folderId, callback) {
               src: file.webContentLink.replace('&export=download', ''),
             })
           })
-          callback(result)
+          callback(result, nextPageToken)
         } else {
-          console.log('No files found.')
+          callback([], pageToken)
         }
       },
     )

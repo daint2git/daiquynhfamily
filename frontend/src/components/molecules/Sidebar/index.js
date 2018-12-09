@@ -22,6 +22,18 @@ const MENUS = [
     icon: weddingRing,
   },
   {
+    id: 'chupcuoile',
+    name: 'Chụp Cưới (Lễ)',
+    path: '/chupcuoile',
+    icon: weddingCouple4,
+  },
+  {
+    id: 'chupcuoitiec',
+    name: 'Chụp Cưới (Tiệc)',
+    path: '/chupcuoitiec',
+    icon: weddingCouple5,
+  },
+  {
     id: 'chuphoian',
     name: 'Chụp Hội An',
     path: '/chuphoian',
@@ -44,18 +56,6 @@ const MENUS = [
     name: 'Chụp Studio',
     path: '/chupstudio',
     icon: weddingCouple3,
-  },
-  {
-    id: 'chupcuoile',
-    name: 'Chụp Cưới (Lễ)',
-    path: '/chupcuoile',
-    icon: weddingCouple4,
-  },
-  {
-    id: 'chupcuoitiec',
-    name: 'Chụp Cưới (Tiệc)',
-    path: '/chupcuoitiec',
-    icon: weddingCouple5,
   },
 ]
 

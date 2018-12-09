@@ -28,6 +28,10 @@
       .column {
         flex: 50%;
         max-width: 50%;
+
+        &>img {
+          height: 300px;
+        }
       }
     }
 
@@ -35,6 +39,10 @@
       .column {
         flex: 25%;
         max-width: 25%;
+
+        &>img {
+          height: 250px;
+        }
       }
     }
   }
