@@ -9,11 +9,11 @@ class ScrollButton extends React.Component {
   state = { isVisibled: false }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.check)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.check)
   }
 
   check = () => this.setState({ isVisibled: window.pageYOffset > window.innerHeight })
