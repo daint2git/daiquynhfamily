@@ -136,6 +136,35 @@ input,
     box-shadow: 0 0 1px rgba(255, 255, 255, .5);
   }
 /**
+ * Flat UI Color
+ */
+.src-components-molecules-ScrollButton-styles__root--2mwCc {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5em;
+  height: 3.5em;
+  background-color: #3498DB;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.src-components-molecules-ScrollButton-styles__root--2mwCc>img {
+    width: 1.5em;
+    height: 1.5em;
+  }
+.src-components-molecules-ScrollButton-styles__root--2mwCc[data-visible='true'] {
+    visibility: visible;
+  }
+.src-components-molecules-ScrollButton-styles__root--2mwCc:hover {
+    background-color: #2980B9;
+  }
+/**
  * Font Size
  */
 .src-components-atoms-Overlay-styles__root--24q9- {

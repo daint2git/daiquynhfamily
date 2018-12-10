@@ -11,9 +11,7 @@
     "readline": "^1.3.0"
   },
   "scripts": {
-    "dev:backend": "nodemon ./backend/server.js",
-    "start:backend": "node ./backend/server.js",
-    "build:frontend": "cd frontend && yarn build"
+    "start:backend": "node ./backend/server.js"
   },
   "devDependencies": {
     "nodemon": "^1.18.7"

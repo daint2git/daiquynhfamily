@@ -5,11 +5,11 @@ const cookieParser = require('cookie-parser')
 const { getFiles } = require('./connect.googleapis')
 
 const app = express()
-const port = process.env.PORT || 6969
+const port = process.env.PORT || 9696
 const origin =
   process.env.NODE_ENV === 'production'
     ? 'https://daiquynhfamily.herokuapp.com'
-    : 'http://localhost:9999'
+    : 'http://localhost:6969'
 
 app.use(cors({ credentials: true, origin }))
 app.use(cookieParser())
