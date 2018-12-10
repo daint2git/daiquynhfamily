@@ -1,22 +1,17 @@
 import PageLayout from 'components/templates/PageLayout'
+import Heading from 'components/atoms/Heading'
 
 const Page = () => (
   <PageLayout currentPath="/">
-    <h1>Tình yêu của em – là định mệnh đời anh</h1>
-    <div
-      style={{
-        padding: '1em',
-        width: '30em',
-        height: '20em',
-      }}
-    >
+    <Heading>Khi yêu… hãy yêu thật trọn vẹn</Heading>
+    <div style={{ padding: '1em' }}>
       <img
         src="https://drive.google.com/uc?id=1WDUjDfJre2MCyOw3cDks-WL1FUsVIgXN"
         alt="https://drive.google.com/uc?id=1WDUjDfJre2MCyOw3cDks-WL1FUsVIgXN"
         style={{
           display: 'block',
           width: '100%',
-          height: '100%',
+          height: 'auto',
           verticalAlign: 'middle',
           border: '1px solid rgb(221, 223, 226)',
           borderRadius: '2px',

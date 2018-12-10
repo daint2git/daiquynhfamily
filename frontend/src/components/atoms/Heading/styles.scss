@@ -1,0 +1,32 @@
+@import 'utils/colors.scss';
+@import 'utils/variables.scss';
+
+.root {
+  text-indent: 0.5em;
+  padding: 0.5em;
+  color: $fu_c_wet_asphalt;
+  text-shadow: 0.4px 0.4px 5px rgba(0, 0, 0, 0.2);
+  user-select: none;
+
+  &.h1 {
+    font-size: calc($fs_xxx_large + 2vmin);
+    line-height: calc($fs_xxx_large + 5vmin);
+    font-weight: 900;
+  }
+
+  &.h2 {
+    font-size: calc($fs_xx_large + 2vmin);
+    line-height: calc($fs_xxx_large + 4vmin);
+    font-weight: 700;
+  }
+
+  &.h3 {
+    font-size: calc($fs_x_large + 2vmin);
+    line-height: calc($fs_xxx_large + 3vmin);
+    font-weight: 700;
+  }
+
+  &[data-color='white'] {
+    color: $white;
+  }
+}

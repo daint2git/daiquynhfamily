@@ -1,4 +1,4 @@
-import { createMiddleware } from '../../utils'
+import { createMiddleware } from '../../toolbelt'
 import { preventSubmit, startLoading, stopLoading } from './reducer'
 
 const loading = (store, next, action) => {
@@ -13,9 +13,8 @@ const loading = (store, next, action) => {
       return data
     })
     .catch(error => {
-      const {
-        response: { status, data },
-      } = error
+      const { response } = error
+      const { status, data } = response
       clearTimeout(timerId)
       dispatch(stopLoading())
       /* eslint-disable prefer-promise-reject-errors */

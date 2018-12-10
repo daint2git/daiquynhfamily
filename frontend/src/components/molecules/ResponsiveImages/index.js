@@ -1,6 +1,6 @@
 import Lazyload from 'react-lazyload'
-import hash from 'utils/fnv-hash'
 
+import hash from 'utils/fnv-hash'
 import Placeholder from 'components/atoms/Placeholder'
 import cssModuleNameTag from 'utils/cssModuleNameTag'
 import styles from './styles.scss'

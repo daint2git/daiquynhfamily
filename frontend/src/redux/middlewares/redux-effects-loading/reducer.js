@@ -1,9 +1,9 @@
-import { createAction, handleActions, handleAction } from '../../utils'
+import { createActionWithPrefix, handleActions, handleAction } from '../../toolbelt'
 
 const ROOT = '@@redux-effects-loading'
-export const preventSubmit = createAction(`${ROOT}/PREVENT_SUBMIT`)
-export const startLoading = createAction(`${ROOT}/START_LOADING`)
-export const stopLoading = createAction(`${ROOT}/STOP_LOADING`)
+export const preventSubmit = createActionWithPrefix(ROOT)('PREVENT_SUBMIT')
+export const startLoading = createActionWithPrefix(ROOT)('START_LOADING')
+export const stopLoading = createActionWithPrefix(ROOT)('STOP_LOADING')
 
 const INITIAL_STATE = () => ({
   shouldPreventSubmit: false,

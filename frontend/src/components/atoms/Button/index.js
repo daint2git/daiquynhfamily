@@ -10,9 +10,7 @@ const loadClass = cssModuleNameTag(styles)
 const Button = props => <button type="button" {...props} />
 
 const EnhancedComponent = compose(
-  connect(state => ({
-    shouldPreventSubmit: state.loading.shouldPreventSubmit,
-  })),
+  connect(state => ({ shouldPreventSubmit: state.loading.shouldPreventSubmit })),
   defaultProps({
     type: 'primary',
     size: 'medium',

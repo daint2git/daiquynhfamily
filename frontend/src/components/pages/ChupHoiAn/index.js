@@ -1,56 +1,16 @@
 import PageLayout from 'components/templates/PageLayout'
 import ResponsiveImages from 'components/molecules/ResponsiveImages'
-import imgMountains from 'images/mountains.jpg'
-import imgLights from 'images/lights.jpg'
-import imgNature from 'images/nature.jpg'
-import imgSnowWide from 'images/snow_wide.jpg'
+import imgWedding from 'images/wedding.jpg'
+import Heading from 'components/atoms/Heading'
 
-const IMAGES = [
-  {
-    id: 1,
-    src: imgMountains,
-  },
-  {
-    id: 2,
-    src: imgLights,
-  },
-  {
-    id: 3,
-    src: imgNature,
-  },
-  {
-    id: 4,
-    src: imgSnowWide,
-  },
-  {
-    id: 5,
-    src: imgMountains,
-  },
-  {
-    id: 6,
-    src: imgLights,
-  },
-  {
-    id: 7,
-    src: imgNature,
-  },
-  {
-    id: 8,
-    src: imgSnowWide,
-  },
-  {
-    id: 9,
-    src: imgNature,
-  },
-  {
-    id: 10,
-    src: imgSnowWide,
-  },
-]
+const IMAGES = Array.from({ length: 12 }, (v, k) => k).map(k => ({
+  id: k,
+  src: imgWedding,
+}))
 
 const Page = () => (
   <PageLayout currentPath="/chuphoian">
-    <h1>Tình yêu lớn không phải yêu nhiều người mà là yêu một người và suốt đời</h1>
+    <Heading>Tình yêu lớn không phải yêu nhiều người mà là yêu một người và suốt đời</Heading>
     <ResponsiveImages list={IMAGES} />
   </PageLayout>
 )

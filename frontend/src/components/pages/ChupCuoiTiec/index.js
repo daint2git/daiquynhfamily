@@ -4,17 +4,18 @@ import { bindActionCreators } from 'redux'
 import { fetchList, fetchNextList } from 'redux/reducers/chupcuoitiec'
 import asyncLoader from 'utils/hoc/asyncLoader'
 import Button from 'components/atoms/Button'
-import PageLayout from 'components/templates/PageLayout'
+import Heading from 'components/atoms/Heading'
 import ResponsiveImages from 'components/molecules/ResponsiveImages'
+import PageLayout from 'components/templates/PageLayout'
 
-const Page = ({ list, fetchNextList: fetchNextListAct, nextPageToken }) => (
+const Page = ({ list, fetchNextList: fetchNextListAct }) => (
   <PageLayout currentPath="/chupcuoitiec">
-    <h1>
+    <Heading>
       Tình yêu là sự rung cảm của một tâm hồn khi gặp một tâm hồn đồng điệu, là sự hòa nhịp của hai
       trái tim, làm người ta nhìn thấy mọi vật tươi đẹp hơn
-    </h1>
+    </Heading>
     <ResponsiveImages list={list} />
-    <Button style={{ width: '50%' }} onClick={() => fetchNextListAct({ nextPageToken })}>
+    <Button style={{ width: '50%' }} onClick={() => fetchNextListAct()}>
       Load more
     </Button>
   </PageLayout>
@@ -22,10 +23,7 @@ const Page = ({ list, fetchNextList: fetchNextListAct, nextPageToken }) => (
 
 export default compose(
   connect(
-    state => ({
-      list: state.chupcuoitiec.list,
-      nextPageToken: state.chupcuoitiec.nextPageToken,
-    }),
+    state => ({ list: state.chupcuoitiec.list }),
     dispatch => bindActionCreators({ fetchList, fetchNextList }, dispatch),
   ),
   asyncLoader(props => props.fetchList()),

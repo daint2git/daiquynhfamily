@@ -7,6 +7,7 @@ import ChupSanBay from 'components/pages/ChupSanBay'
 import ChupStudio from 'components/pages/ChupStudio'
 import ChupCuoiLe from 'components/pages/ChupCuoiLe'
 import ChupCuoiTiec from 'components/pages/ChupCuoiTiec'
+import NotFound from 'components/pages/NotFound'
 
 const appRoutes = () => (
   <Switch>
@@ -17,6 +18,7 @@ const appRoutes = () => (
     <Route path="/chupstudio" component={ChupStudio} />
     <Route path="/chupcuoile" component={ChupCuoiLe} />
     <Route path="/chupcuoitiec" component={ChupCuoiTiec} />
+    <Route component={NotFound} />
   </Switch>
 )
 

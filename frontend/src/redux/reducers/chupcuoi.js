@@ -1,10 +1,9 @@
 import { steps } from 'redux-effects-steps'
-import { createAction, createErrorAction, handleActions, handleAction } from 'redux/utils'
+import { createAction, createErrorAction, handleActions, handleAction } from 'redux/toolbelt'
 import { fetch } from 'redux/reducers/axios'
 
 const fetchListSuccess = createAction('FETCH_LIST_SUCCESS')
 const fetchListFail = createErrorAction('FETCH_LIST_FAIL')
-
 export const fetchList = url =>
   steps(
     fetch({
@@ -16,38 +15,31 @@ export const fetchList = url =>
 
 const fetchNextListSuccess = createAction('FETCH_NEXT_LIST_SUCCESS')
 const fetchNextListFail = createErrorAction('FETCH_NEXT_LIST_FAIL')
-
-export const fetchNextList = (url, { nextPageToken }) =>
+export const fetchNextList = url =>
   steps(
     fetch({
       method: 'get',
       url,
-      params: {
-        nextPage: true,
-        nextPageToken,
-      },
+      params: { nextPage: true },
     }),
     [fetchNextListSuccess, fetchNextListFail],
   )
 
 export const INITIAL_STATE = () => ({
   list: [],
-  nextPageToken: '',
 })
 
 export default handleActions([
   handleAction(fetchListSuccess, (state, payload) => ({
     ...state,
-    list: payload.files,
-    nextPageToken: payload.nextPageToken,
+    list: payload,
   })),
   handleAction(fetchListFail, state => ({
     ...state,
   })),
   handleAction(fetchNextListSuccess, (state, payload) => ({
     ...state,
-    list: [...state.list, ...payload.files],
-    nextPageToken: payload.nextPageToken,
+    list: [...state.list, ...payload],
   })),
   handleAction(fetchNextListFail, state => ({
     ...state,

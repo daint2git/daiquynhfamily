@@ -1,57 +1,54 @@
 import { steps } from 'redux-effects-steps'
-import { createAction, createErrorAction, handleActions, handleAction } from 'redux/utils'
+import {
+  createActionWithPrefix,
+  createErrorActionWithPrefix,
+  handleActions,
+  handleAction,
+} from 'redux/toolbelt'
 import { fetch } from 'redux/reducers/axios'
 
-const createActionWithPrefix = name => createAction(`CHUP_CUOI_LE/${name}`)
-const createErrorActionWithPrefix = name => createErrorAction(`CHUP_CUOI_LE/${name}`)
+const ROOT = 'CHUP_CUOI_LE'
+const action = createActionWithPrefix(ROOT)
+const errorAction = createErrorActionWithPrefix(ROOT)
 
-const fetchListSuccess = createActionWithPrefix('FETCH_LIST_SUCCESS')
-const fetchListFail = createErrorActionWithPrefix('FETCH_LIST_FAIL')
-
-export const fetchList = request =>
+const fetchListSuccess = action('FETCH_LIST_SUCCESS')
+const fetchListFail = errorAction('FETCH_LIST_FAIL')
+export const fetchList = () =>
   steps(
     fetch({
       method: 'get',
       url: 'chupcuoile',
-      ...request,
     }),
     [fetchListSuccess, fetchListFail],
   )
 
-const fetchNextListSuccess = createActionWithPrefix('FETCH_NEXT_LIST_SUCCESS')
-const fetchNextListFail = createErrorActionWithPrefix('FETCH_NEXT_LIST_FAIL')
-
-export const fetchNextList = ({ nextPageToken }) =>
+const fetchNextListSuccess = action('FETCH_NEXT_LIST_SUCCESS')
+const fetchNextListFail = errorAction('FETCH_NEXT_LIST_FAIL')
+export const fetchNextList = () =>
   steps(
     fetch({
       method: 'get',
       url: 'chupcuoile',
-      params: {
-        nextPage: true,
-        nextPageToken,
-      },
+      params: { nextPage: true },
     }),
     [fetchNextListSuccess, fetchNextListFail],
   )
 
 export const INITIAL_STATE = () => ({
   list: [],
-  nextPageToken: '',
 })
 
 export default handleActions([
   handleAction(fetchListSuccess, (state, payload) => ({
     ...state,
-    list: payload.files,
-    nextPageToken: payload.nextPageToken,
+    list: payload,
   })),
   handleAction(fetchListFail, state => ({
     ...state,
   })),
   handleAction(fetchNextListSuccess, (state, payload) => ({
     ...state,
-    list: [...state.list, ...payload.files],
-    nextPageToken: payload.nextPageToken,
+    list: [...state.list, ...payload],
   })),
   handleAction(fetchNextListFail, state => ({
     ...state,

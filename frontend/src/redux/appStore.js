@@ -9,9 +9,7 @@ import rootReducer from 'redux/reducers/rootReducer'
 const appStore = (initalState = {}) => {
   const middlewares = [loadingMiddleware([AXIOS]), axiosMiddleware, stepsMiddleware]
 
-  if (DEVELOPMENT) {
-    middlewares.push(ReduxEmitter())
-  }
+  if (DEVELOPMENT) middlewares.push(ReduxEmitter())
 
   const enhancer = compose(applyMiddleware(...middlewares))
   const store = createStore(rootReducer, initalState, enhancer)

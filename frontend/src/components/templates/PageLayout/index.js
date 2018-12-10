@@ -1,5 +1,4 @@
 import Sidebar from 'components/molecules/Sidebar'
-
 import cssModuleNameTag from 'utils/cssModuleNameTag'
 import styles from './styles.scss'
 

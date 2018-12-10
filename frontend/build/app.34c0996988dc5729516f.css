@@ -213,8 +213,8 @@ input,
     color: #fff;
   }
 .src-components-molecules-Sidebar-styles__root--3mkXK .src-components-molecules-Sidebar-styles__icon--1BDrH>img {
-      width: 1.2em;
-      height: 1.2em;
+      width: 2em;
+      height: 2em;
     }
 .src-components-molecules-Sidebar-styles__root--3mkXK .src-components-molecules-Sidebar-styles__sidebar-trigger--13JwB {
     position: fixed;
@@ -316,15 +316,6 @@ input,
     flex: 1;
     margin: 4em 0;
   }
-.src-components-templates-PageLayout-styles__root--tChtF .src-components-templates-PageLayout-styles__content--2fCyc > h1 {
-      text-indent: 0.5em;
-      font-size: calc(1.6rem + 2vmin);
-      padding: 1em;
-    }
-.src-components-templates-PageLayout-styles__root--tChtF .src-components-templates-PageLayout-styles__content--2fCyc > p {
-      text-indent: 0.5em;
-      padding: 0.5em 0;
-    }
 @media screen and (min-width: 768px) {
     .src-components-templates-PageLayout-styles__root--tChtF .src-components-templates-PageLayout-styles__content--2fCyc {
       margin-left: 4em;
@@ -338,6 +329,40 @@ input,
     }
   }
 
+/**
+ * Flat UI Color
+ */
+/**
+ * Font Size
+ */
+.src-components-atoms-Heading-styles__root--3Ugr3 {
+  text-indent: 0.5em;
+  padding: 0.5em;
+  color: #34495E;
+  text-shadow: 0.4px 0.4px 5px rgba(0, 0, 0, 0.2);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.src-components-atoms-Heading-styles__root--3Ugr3.src-components-atoms-Heading-styles__h1--1w3_V {
+    font-size: calc(2.6rem + 2vmin);
+    line-height: calc(2.6rem + 5vmin);
+    font-weight: 900;
+  }
+.src-components-atoms-Heading-styles__root--3Ugr3.src-components-atoms-Heading-styles__h2--EsRZT {
+    font-size: calc(2.4rem + 2vmin);
+    line-height: calc(2.6rem + 4vmin);
+    font-weight: 700;
+  }
+.src-components-atoms-Heading-styles__root--3Ugr3.src-components-atoms-Heading-styles__h3--21pzu {
+    font-size: calc(1.8rem + 2vmin);
+    line-height: calc(2.6rem + 3vmin);
+    font-weight: 700;
+  }
+.src-components-atoms-Heading-styles__root--3Ugr3[data-color='white'] {
+    color: #fff;
+  }
 /**
  * Flat UI Color
  */

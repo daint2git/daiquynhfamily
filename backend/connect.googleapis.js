@@ -10,20 +10,13 @@ const SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
 // time.
 const TOKEN_PATH = path.join(__dirname + '/token.json')
 
-// Load client secrets from a local file.
-// fs.readFile('credentials.json', (err, content) => {
-//   if (err) return console.log('Error loading client secret file:', err)
-//   // Authorize a client with credentials, then call the Google Drive API.
-//   authorize(JSON.parse(content), listFiles)
-// })
-
-module.exports.getFiles = (params, callback) => {
+module.exports.getFiles = (params, callback) =>
+  // Load client secrets from a local file.
   fs.readFile(path.join(__dirname + '/credentials.json'), (err, content) => {
     if (err) return console.log('Error loading client secret file:', err)
     // Authorize a client with credentials, then call the Google Drive API.
     authorize(JSON.parse(content), listFiles(params, callback))
   })
-}
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -79,7 +72,7 @@ function getAccessToken(oAuth2Client, callback) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 function listFiles(params, callback) {
-  return function(auth) {
+  return auth => {
     const drive = google.drive({ version: 'v3', auth })
     const { folderId, pageToken } = params
     drive.files.list(
@@ -91,13 +84,12 @@ function listFiles(params, callback) {
       },
       (err, res) => {
         if (err) return console.log('The API returned an error: ' + err)
-        const nextPageToken = res.data.nextPageToken
-        const files = res.data.files
+        const { files, nextPageToken } = res.data
         const result = []
         if (files.length) {
           files.map(file => {
             result.push({
-              id: file.name,
+              name: file.name,
               src: file.webContentLink.replace('&export=download', ''),
             })
           })
