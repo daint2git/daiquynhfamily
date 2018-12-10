@@ -1,6 +1,5 @@
 import React from 'react'
 import arrowUp from 'svg/arrow-up.svg'
-import arrowDown from 'svg/arrow-down.svg'
 import cssModuleNameTag from 'utils/cssModuleNameTag'
 import styles from './styles.scss'
 
@@ -17,24 +16,21 @@ class ScrollButton extends React.Component {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
-  handleScroll = () => this.setState({ isVisibled: window.pageYOffset > window.innerHeight })
+  check = () => this.setState({ isVisibled: window.pageYOffset > window.innerHeight })
 
-  handleRoll = isRollup => window.scrollTo(0, isRollup ? 0 : document.documentElement.scrollHeight)
+  rollup = () => window.scrollTo(0, 0)
 
   render() {
     const { isVisibled } = this.state
-    const { className, isRollup, ...rest } = this.props
     return (
-      <button
-        type="button"
-        className={cssModules`root ${className}`}
+      <div
+        className={cssModules`root`}
         data-visible={isVisibled}
-        onScroll={this.handleScroll}
-        onClick={() => this.handleRoll(isRollup)}
-        {...rest}
+        onScroll={this.check}
+        onClick={this.rollup}
       >
-        <img src={isRollup ? arrowUp : arrowDown} alt={isRollup ? 'arrow-up' : 'arrow-down'} />
-      </button>
+        <img src={arrowUp} alt="arrow-up" />
+      </div>
     )
   }
 }

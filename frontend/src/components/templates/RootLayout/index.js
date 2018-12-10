@@ -4,7 +4,7 @@ import Loading from 'components/molecules/Loading'
 const RootLayout = ({ children }) => (
   <>
     {children}
-    <ScrollButton isRollup />
+    <ScrollButton />
     <Loading />
   </>
 )
