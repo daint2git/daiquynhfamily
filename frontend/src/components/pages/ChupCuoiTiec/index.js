@@ -8,8 +8,8 @@ import Heading from 'components/atoms/Heading'
 import ResponsiveImages from 'components/molecules/ResponsiveImages'
 import PageLayout from 'components/templates/PageLayout'
 
-const Page = ({ list, fetchNextList: fetchNextListAct }) => (
-  <PageLayout currentPath="/chupcuoitiec">
+const PageContent = ({ list, fetchNextList: fetchNextListAct }) => (
+  <>
     <Heading>
       Tình yêu là sự rung cảm của một tâm hồn khi gặp một tâm hồn đồng điệu, là sự hòa nhịp của hai
       trái tim, làm người ta nhìn thấy mọi vật tươi đẹp hơn
@@ -18,13 +18,21 @@ const Page = ({ list, fetchNextList: fetchNextListAct }) => (
     <Button style={{ width: '50%' }} onClick={() => fetchNextListAct()}>
       Load more
     </Button>
-  </PageLayout>
+  </>
 )
 
-export default compose(
+const EnhancedPageContent = compose(
   connect(
     state => ({ list: state.chupcuoitiec.list }),
     dispatch => bindActionCreators({ fetchList, fetchNextList }, dispatch),
   ),
   asyncLoader(props => props.fetchList()),
-)(Page)
+)(PageContent)
+
+const Page = props => (
+  <PageLayout currentPath="/chupcuoitiec">
+    <EnhancedPageContent {...props} />
+  </PageLayout>
+)
+
+export default Page

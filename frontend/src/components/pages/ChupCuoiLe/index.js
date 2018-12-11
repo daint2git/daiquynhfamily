@@ -8,20 +8,28 @@ import Heading from 'components/atoms/Heading'
 import ResponsiveImages from 'components/molecules/ResponsiveImages'
 import PageLayout from 'components/templates/PageLayout'
 
-const Page = ({ list, fetchNextList: fetchNextListAct }) => (
-  <PageLayout currentPath="/chupcuoile">
+const PageContent = ({ list, fetchNextList: fetchNextListAct }) => (
+  <>
     <Heading>Yêu chính là muốn ở bên một người, không muốn xa người đó dù chỉ là một giây</Heading>
     <ResponsiveImages list={list} />
     <Button style={{ width: '50%' }} onClick={() => fetchNextListAct()}>
       Load more
     </Button>
-  </PageLayout>
+  </>
 )
 
-export default compose(
+const EnhancedPageContent = compose(
   connect(
     state => ({ list: state.chupcuoile.list }),
     dispatch => bindActionCreators({ fetchList, fetchNextList }, dispatch),
   ),
   asyncLoader(props => props.fetchList()),
-)(Page)
+)(PageContent)
+
+const Page = props => (
+  <PageLayout currentPath="/chupcuoile">
+    <EnhancedPageContent {...props} />
+  </PageLayout>
+)
+
+export default Page

@@ -1,4 +1,5 @@
 import Lazyload from 'react-lazyload'
+import { compose, branch, renderNothing } from 'recompose'
 
 import hash from 'utils/fnv-hash'
 import Placeholder from 'components/atoms/Placeholder'
@@ -41,4 +42,4 @@ const ResponsiveImages = ({ list }) => {
   return <div className={cssModules`root`}>{rowList}</div>
 }
 
-export default ResponsiveImages
+export default compose(branch(({ list }) => !list, renderNothing))(ResponsiveImages)
