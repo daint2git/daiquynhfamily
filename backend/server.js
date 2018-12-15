@@ -31,12 +31,13 @@ const handleClientCall = folderId => (req, res) => {
 }
 
 app.get('/api/trangchu', handleClientCall(''))
+app.get('/api/chupghep', handleClientCall('115bhQufz4b3en8aBJSZ5fxaq82txF4cA'))
+app.get('/api/chuphoian', handleClientCall('1FPEIclPpWlj6KeeOzy92vT5pfik49Mdr'))
+app.get('/api/chupsanbay', handleClientCall('1aOfaRL5JCOgCcqteo_j8boKIrtDgQiZc'))
+app.get('/api/chupbaida', handleClientCall('1ZhNYd6SpIBwpF8eIPUS22X-Z3sO_9bWH'))
+app.get('/api/chupstudio', handleClientCall('1EyYjk11tAwVwaZhjH6z5xuMFHbFbvOts'))
 app.get('/api/chupcuoile', handleClientCall('1X4vLvMCyXBM_iVQKOWg8m_y4JvwwPxB5'))
 app.get('/api/chupcuoitiec', handleClientCall('1KU7pMSg8VnQdQ7bUw5MvEZwckoVIhyB-'))
-app.get('/api/chuphoian', handleClientCall(''))
-app.get('/api/chupbaida', handleClientCall(''))
-app.get('/api/chupsanbay', handleClientCall(''))
-app.get('/api/chupstudio', handleClientCall(''))
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))

@@ -8,6 +8,7 @@ import weddingCouple2 from 'svg/wedding/wedding-couple_2.svg'
 import weddingCouple3 from 'svg/wedding/wedding-couple_3.svg'
 import weddingCouple4 from 'svg/wedding/wedding-couple_4.svg'
 import weddingCouple5 from 'svg/wedding/wedding-couple_5.svg'
+import weddingCouple6 from 'svg/wedding/wedding-couple_6.svg'
 import Repeater from 'utils/hoc/repeaterComponent'
 import cssModuleNameTag from 'utils/cssModuleNameTag'
 import styles from './styles.scss'
@@ -22,40 +23,46 @@ const MENUS = [
     icon: weddingRing,
   },
   {
-    id: 'chupcuoile',
-    name: 'Chụp Cưới (Lễ)',
-    path: '/chupcuoile',
-    icon: weddingCouple4,
-  },
-  {
-    id: 'chupcuoitiec',
-    name: 'Chụp Cưới (Tiệc)',
-    path: '/chupcuoitiec',
-    icon: weddingCouple5,
-  },
-  {
-    id: 'chuphoian',
-    name: 'Chụp Hội An',
-    path: '/chuphoian',
+    id: 'chupghep',
+    name: 'Ảnh Ghép',
+    path: '/chupghep',
     icon: weddingCouple0,
   },
   {
-    id: 'chupbaida',
-    name: 'Chụp Bãi Đá',
-    path: '/chupbaida',
+    id: 'chuphoian',
+    name: 'Ảnh Hội An',
+    path: '/chuphoian',
     icon: weddingCouple1,
   },
   {
     id: 'chupsanbay',
-    name: 'Chụp Sân Bay',
+    name: 'Ảnh Sân Bay',
     path: '/chupsanbay',
     icon: weddingCouple2,
   },
   {
-    id: 'chupstudio',
-    name: 'Chụp Studio',
-    path: '/chupstudio',
+    id: 'chupbaida',
+    name: 'Ảnh Bãi Đá',
+    path: '/chupbaida',
     icon: weddingCouple3,
+  },
+  {
+    id: 'chupstudio',
+    name: 'Ảnh Studio',
+    path: '/chupstudio',
+    icon: weddingCouple4,
+  },
+  {
+    id: 'chupcuoile',
+    name: 'Ảnh Cưới (Lễ)',
+    path: '/chupcuoile',
+    icon: weddingCouple5,
+  },
+  {
+    id: 'chupcuoitiec',
+    name: 'Ảnh Cưới (Tiệc)',
+    path: '/chupcuoitiec',
+    icon: weddingCouple6,
   },
 ]
 

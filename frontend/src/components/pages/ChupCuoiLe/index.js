@@ -10,7 +10,7 @@ import PageLayout from 'components/templates/PageLayout'
 
 const PageContent = ({ list, fetchNextList: fetchNextListAct }) => (
   <>
-    <Heading>Yêu chính là muốn ở bên một người, không muốn xa người đó dù chỉ là một giây</Heading>
+    <Heading>Tình yêu của em – là định mệnh đời anh</Heading>
     <ResponsiveImages list={list} />
     <Button style={{ width: '50%' }} onClick={() => fetchNextListAct()}>
       Load more

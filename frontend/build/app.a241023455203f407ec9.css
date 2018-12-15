@@ -395,6 +395,85 @@ input,
 /**
  * Flat UI Color
  */
+/**
+ * Font Size
+ */
+.src-components-atoms-Button-styles__root--13V6N {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 250ms linear, color 250ms linear;
+}
+.src-components-atoms-Button-styles__root--13V6N:disabled {
+    cursor: default;
+    pointer-events: none;
+    background-color: #95A5A6 !important;
+    color: #fff !important;
+  }
+.src-components-atoms-Button-styles__root--13V6N[data-type='primary'] {
+    background-color: #3498DB;
+    color: #fff;
+  }
+.src-components-atoms-Button-styles__root--13V6N[data-type='primary']:hover {
+      background-color: #2980B9;
+    }
+.src-components-atoms-Button-styles__root--13V6N[data-size='medium'] {
+    font-size: 1.3rem;
+    min-width: 120px;
+    height: 36px;
+    padding: 0 15px;
+  }
+@-webkit-keyframes src-components-atoms-Button-styles__ripple--1GRPs {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scale(100, 100);
+            transform: scale(100, 100);
+    opacity: 0;
+  }
+}
+@keyframes src-components-atoms-Button-styles__ripple--1GRPs {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scale(100, 100);
+            transform: scale(100, 100);
+    opacity: 0;
+  }
+}
+.src-components-atoms-Button-styles__animation--1wPTR {
+  position: relative;
+  overflow: hidden;
+}
+.src-components-atoms-Button-styles__animation--1wPTR::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: 5px;
+    height: 5px;
+    opacity: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .5);
+  }
+.src-components-atoms-Button-styles__animation--1wPTR:focus:not(:active)::after {
+    -webkit-animation: src-components-atoms-Button-styles__ripple--1GRPs 1s ease-out;
+            animation: src-components-atoms-Button-styles__ripple--1GRPs 1s ease-out;
+  }
+/**
+ * Flat UI Color
+ */
 .src-components-atoms-Placeholder-styles__root--2KcN9 {
   display: flex;
   justify-content: center;
@@ -533,82 +612,3 @@ input,
         max-width: 25%;
       }
     }
-/**
- * Flat UI Color
- */
-/**
- * Font Size
- */
-.src-components-atoms-Button-styles__root--13V6N {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  transition: background-color 250ms linear, color 250ms linear;
-}
-.src-components-atoms-Button-styles__root--13V6N:disabled {
-    cursor: default;
-    pointer-events: none;
-    background-color: #95A5A6 !important;
-    color: #fff !important;
-  }
-.src-components-atoms-Button-styles__root--13V6N[data-type='primary'] {
-    background-color: #3498DB;
-    color: #fff;
-  }
-.src-components-atoms-Button-styles__root--13V6N[data-type='primary']:hover {
-      background-color: #2980B9;
-    }
-.src-components-atoms-Button-styles__root--13V6N[data-size='medium'] {
-    font-size: 1.3rem;
-    min-width: 120px;
-    height: 36px;
-    padding: 0 15px;
-  }
-@-webkit-keyframes src-components-atoms-Button-styles__ripple--1GRPs {
-  0% {
-    -webkit-transform: scale(0, 0);
-            transform: scale(0, 0);
-    opacity: 1;
-  }
-
-  100% {
-    -webkit-transform: scale(100, 100);
-            transform: scale(100, 100);
-    opacity: 0;
-  }
-}
-@keyframes src-components-atoms-Button-styles__ripple--1GRPs {
-  0% {
-    -webkit-transform: scale(0, 0);
-            transform: scale(0, 0);
-    opacity: 1;
-  }
-
-  100% {
-    -webkit-transform: scale(100, 100);
-            transform: scale(100, 100);
-    opacity: 0;
-  }
-}
-.src-components-atoms-Button-styles__animation--1wPTR {
-  position: relative;
-  overflow: hidden;
-}
-.src-components-atoms-Button-styles__animation--1wPTR::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    width: 5px;
-    height: 5px;
-    opacity: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, .5);
-  }
-.src-components-atoms-Button-styles__animation--1wPTR:focus:not(:active)::after {
-    -webkit-animation: src-components-atoms-Button-styles__ripple--1GRPs 1s ease-out;
-            animation: src-components-atoms-Button-styles__ripple--1GRPs 1s ease-out;
-  }

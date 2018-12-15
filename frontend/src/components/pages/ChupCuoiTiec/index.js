@@ -11,8 +11,8 @@ import PageLayout from 'components/templates/PageLayout'
 const PageContent = ({ list, fetchNextList: fetchNextListAct }) => (
   <>
     <Heading>
-      Tình yêu là sự rung cảm của một tâm hồn khi gặp một tâm hồn đồng điệu, là sự hòa nhịp của hai
-      trái tim, làm người ta nhìn thấy mọi vật tươi đẹp hơn
+      Tình yêu là sự hy sinh, bởi chỉ có khi yêu, con người mới dám hy sinh vì nhau, hy sinh thời
+      gian, công sức, mà có khi là cả một đời cho nhau.
     </Heading>
     <ResponsiveImages list={list} />
     <Button style={{ width: '50%' }} onClick={() => fetchNextListAct()}>

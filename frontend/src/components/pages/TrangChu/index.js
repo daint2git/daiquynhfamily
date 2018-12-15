@@ -3,11 +3,11 @@ import Heading from 'components/atoms/Heading'
 
 const Page = () => (
   <PageLayout currentPath="/">
-    <Heading>Khi yêu… hãy yêu thật trọn vẹn</Heading>
+    <Heading>Khi yêu… hãy yêu thật trọn vẹn.</Heading>
     <div style={{ padding: '1em' }}>
       <img
-        src="https://drive.google.com/uc?id=1WDUjDfJre2MCyOw3cDks-WL1FUsVIgXN"
-        alt="https://drive.google.com/uc?id=1WDUjDfJre2MCyOw3cDks-WL1FUsVIgXN"
+        src="https://drive.google.com/uc?id=1u27YR_nHNIL0OAepkvErXPhoX4wWjPwa"
+        alt="https://drive.google.com/uc?id=1u27YR_nHNIL0OAepkvErXPhoX4wWjPwa"
         style={{
           display: 'block',
           width: '100%',

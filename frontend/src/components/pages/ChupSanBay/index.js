@@ -1,20 +1,34 @@
-import PageLayout from 'components/templates/PageLayout'
-import ResponsiveImages from 'components/molecules/ResponsiveImages'
-import imgWedding from 'images/wedding.jpg'
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchList, fetchNextList } from 'redux/reducers/chupsanbay'
+import asyncLoader from 'utils/hoc/asyncLoader'
+import Button from 'components/atoms/Button'
 import Heading from 'components/atoms/Heading'
+import ResponsiveImages from 'components/molecules/ResponsiveImages'
+import PageLayout from 'components/templates/PageLayout'
 
-const IMAGES = Array.from({ length: 12 }, (v, k) => k).map(k => ({
-  id: k,
-  src: imgWedding,
-}))
+const PageContent = ({ list, fetchNextList: fetchNextListAct }) => (
+  <>
+    <Heading>Tình yêu lớn không phải yêu nhiều người mà là yêu một người và suốt đời.</Heading>
+    <ResponsiveImages list={list} />
+    <Button style={{ width: '50%' }} onClick={() => fetchNextListAct()}>
+      Load more
+    </Button>
+  </>
+)
 
-const Page = () => (
+const EnhancedPageContent = compose(
+  connect(
+    state => ({ list: state.chupsanbay.list }),
+    dispatch => bindActionCreators({ fetchList, fetchNextList }, dispatch),
+  ),
+  asyncLoader(props => props.fetchList()),
+)(PageContent)
+
+const Page = props => (
   <PageLayout currentPath="/chupsanbay">
-    <Heading>
-      Tình yêu biến những điều vô nghĩa của cuộc đời thành những gì có ý nghĩa, làm cho những bất
-      hạnh trở thành hạnh phúc
-    </Heading>
-    <ResponsiveImages list={IMAGES} />
+    <EnhancedPageContent {...props} />
   </PageLayout>
 )
 
