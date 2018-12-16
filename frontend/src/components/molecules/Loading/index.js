@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose, onlyUpdateForPropTypes, setPropTypes } from 'recompose'
 
-import Overlay from 'components/atoms/Overlay'
 import iconLoading from 'svg/icon_loading.svg'
+import Overlay from 'components/atoms/Overlay'
 import cssModuleNameTag from 'utils/cssModuleNameTag'
 import styles from './styles.scss'
 

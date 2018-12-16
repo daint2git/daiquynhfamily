@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import menu from 'svg/menu.svg'
+import menu from 'svg/icon_menu.svg'
 import weddingRing from 'svg/wedding/wedding_ring.svg'
 import weddingCouple0 from 'svg/wedding/wedding-couple_0.svg'
 import weddingCouple1 from 'svg/wedding/wedding-couple_1.svg'

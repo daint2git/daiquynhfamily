@@ -9,7 +9,7 @@ const loadClass = cssModuleNameTag(styles)
 const Overlay = props => <div {...props} />
 
 const EnhancedComponent = compose(
-  setPropTypes({ type: PropTypes.oneOf(['loading']) }),
+  setPropTypes({ type: PropTypes.oneOf(['modal', 'loading']) }),
   mapProps(({ type, ...other }) => ({
     ...other,
     className: loadClass`root`,

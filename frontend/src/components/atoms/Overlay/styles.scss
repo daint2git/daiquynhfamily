@@ -9,8 +9,13 @@
   right: 0;
   bottom: 0;
 
+  &[data-type='modal'] {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: $modal_overlay_layer;
+  }
+
   &[data-type='loading'] {
     background-color: rgba(255, 255, 255, 0.5);
-    z-index: $top_layer;
+    z-index: $loading_overlay_layer;
   }
 }

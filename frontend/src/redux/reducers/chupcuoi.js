@@ -27,21 +27,27 @@ export const fetchNextList = url =>
 
 export const INITIAL_STATE = () => ({
   list: [],
+  allowNextPage: true,
 })
 
-export default handleActions([
-  handleAction(fetchListSuccess, (state, payload) => ({
-    ...state,
-    list: payload,
-  })),
-  handleAction(fetchListFail, state => ({
-    ...state,
-  })),
-  handleAction(fetchNextListSuccess, (state, payload) => ({
-    ...state,
-    list: [...state.list, ...payload],
-  })),
-  handleAction(fetchNextListFail, state => ({
-    ...state,
-  })),
-])
+export default handleActions(
+  [
+    handleAction(fetchListSuccess, (state, payload) => ({
+      ...state,
+      list: payload.files,
+      allowNextPage: payload.allowNextPage,
+    })),
+    handleAction(fetchListFail, state => ({
+      ...state,
+    })),
+    handleAction(fetchNextListSuccess, (state, payload) => ({
+      ...state,
+      list: [...state.list, ...payload.files],
+      allowNextPage: payload.allowNextPage,
+    })),
+    handleAction(fetchNextListFail, state => ({
+      ...state,
+    })),
+  ],
+  INITIAL_STATE(),
+)

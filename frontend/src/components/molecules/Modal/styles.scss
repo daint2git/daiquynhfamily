@@ -1,0 +1,96 @@
+@import 'utils/colors.scss';
+@import 'utils/variables.scss';
+
+.root {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $modal_content_layer;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+  background-color: $white;
+  margin-bottom: 100px;
+
+  &[data-center='true'] {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $fu_c_wet_asphalt;
+    border-bottom: 1px solid rgb(221, 223, 226);
+    padding: 1.5em;
+
+    .title {
+      padding-right: 1em;
+      font-size: $fs_xx_large;
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .icon {
+      cursor: pointer;
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+
+  .body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1.5em;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgb(221, 223, 226);
+    padding: 1.5em;
+
+    > :not(:first-child) {
+      margin-left: 1.5em;
+    }
+  }
+}
+
+@keyframes turnOn {
+  0% {
+    left: 0%;
+  }
+
+  100% {
+    left: 50%;
+  }
+}
+
+.animation-modal {
+  animation: turnOn 500ms ease-out;
+}
+
+@keyframes iconHover {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.animation-icon:hover {
+  animation: iconHover 1s ease;
+}

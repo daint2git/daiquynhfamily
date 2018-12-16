@@ -21,12 +21,18 @@ const handleClientCall = folderId => (req, res) => {
   const params = { folderId }
   const { nextPage } = req.query
   const { nextPageToken } = req.cookies
-
   if (nextPage && nextPageToken) params.pageToken = nextPageToken
 
   getFiles(params, (files, nextPageToken) => {
-    if (nextPageToken) res.cookie('nextPageToken', nextPageToken)
-    res.send(files)
+    const result = {}
+    if (files.length > 0) result.files = files
+    if (nextPageToken) {
+      res.cookie('nextPageToken', nextPageToken)
+      result.allowNextPage = true
+    } else {
+      result.allowNextPage = false
+    }
+    res.send(result)
   })
 }
 

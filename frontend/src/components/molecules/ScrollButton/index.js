@@ -1,5 +1,5 @@
 import React from 'react'
-import arrowUp from 'svg/arrow-up.svg'
+import arrowUp from 'svg/icon_arrow-up.svg'
 import cssModuleNameTag from 'utils/cssModuleNameTag'
 import styles from './styles.scss'
 

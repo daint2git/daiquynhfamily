@@ -7,6 +7,7 @@ import chupbaida from './chupbaida'
 import chupstudio from './chupstudio'
 import chupcuoile from './chupcuoile'
 import chupcuoitiec from './chupcuoitiec'
+import modal from './modal'
 
 export default combineReducers({
   loading,
@@ -17,4 +18,5 @@ export default combineReducers({
   chupstudio,
   chupcuoile,
   chupcuoitiec,
+  modal,
 })

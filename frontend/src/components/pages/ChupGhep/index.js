@@ -1,32 +1,55 @@
-import { compose } from 'recompose'
+import { compose, withHandlers } from 'recompose'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchList, fetchNextList } from 'redux/reducers/chupghep'
+import { openModal, closeModal } from 'redux/reducers/modal'
 import asyncLoader from 'utils/hoc/asyncLoader'
 import Button from 'components/atoms/Button'
 import Heading from 'components/atoms/Heading'
 import ResponsiveImages from 'components/molecules/ResponsiveImages'
+import ResponsiveImageModal from 'components/molecules/ResponsiveImageModal'
 import PageLayout from 'components/templates/PageLayout'
 
-const PageContent = ({ list, fetchNextList: fetchNextListAct }) => (
+const PageContent = ({
+  modal: {
+    type,
+    args: { src },
+  },
+  list,
+  allowNextPage,
+  fetchNextList,
+  openDetailModal,
+  closeDetailModal,
+}) => (
   <>
+    {type && <ResponsiveImageModal src={src} onClose={closeDetailModal} />}
     <Heading>
       Tình yêu không phải là những lời thề non hẹn biển, chỉ đơn giản là cùng nhau bình yên qua
       ngày.
     </Heading>
-    <ResponsiveImages list={list} />
-    <Button style={{ width: '50%' }} onClick={() => fetchNextListAct()}>
-      Load more
-    </Button>
+    <ResponsiveImages list={list} onClick={openDetailModal} />
+    {allowNextPage && (
+      <Button style={{ width: '50%' }} onClick={fetchNextList}>
+        Load more
+      </Button>
+    )}
   </>
 )
 
 const EnhancedPageContent = compose(
   connect(
-    state => ({ list: state.chupghep.list }),
-    dispatch => bindActionCreators({ fetchList, fetchNextList }, dispatch),
+    state => ({
+      list: state.chupghep.list,
+      allowNextPage: state.chupghep.allowNextPage,
+      modal: state.modal,
+    }),
+    dispatch => bindActionCreators({ fetchList, fetchNextList, openModal, closeModal }, dispatch),
   ),
   asyncLoader(props => props.fetchList()),
+  withHandlers({
+    openDetailModal: ({ openModal }) => args => openModal({ type: 'DETAIL', args }),
+    closeDetailModal: ({ closeModal }) => () => closeModal(),
+  }),
 )(PageContent)
 
 const Page = props => (
