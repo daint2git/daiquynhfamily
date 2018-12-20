@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchList, fetchNextList } from 'redux/reducers/chupcuoile'
 import { openModal, closeModal } from 'redux/reducers/modal'
-import asyncLoader from 'utils/hoc/asyncLoader'
+import withAsyncLoader from 'utils/hoc/withAsyncLoader'
 import Button from 'components/atoms/Button'
 import Heading from 'components/atoms/Heading'
 import ResponsiveImages from 'components/molecules/ResponsiveImages'
@@ -42,7 +42,7 @@ const EnhancedPageContent = compose(
     }),
     dispatch => bindActionCreators({ fetchList, fetchNextList, openModal, closeModal }, dispatch),
   ),
-  asyncLoader(props => props.fetchList()),
+  withAsyncLoader(props => props.fetchList()),
   withHandlers({
     openDetailModal: ({ openModal }) => args => openModal({ type: 'DETAIL', args }),
     closeDetailModal: ({ closeModal }) => () => closeModal(),

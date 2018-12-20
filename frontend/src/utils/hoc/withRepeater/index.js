@@ -8,8 +8,8 @@ const either = (value, tester = testValue => !!testValue) => orElse =>
 
 const keyGenerator = (props = {}) => hash(JSON.stringify(props))
 
-const repeaterComponent = (BaseComponent, propName = 'list') => {
-  const RepeaterComponent = props => {
+const withRepeater = (WrappedComponent, propName = 'list') => {
+  const WithRepeater = props => {
     const copyProps = { ...props }
     const list = copyProps[propName]
     // delete prop with key is propName
@@ -18,7 +18,7 @@ const repeaterComponent = (BaseComponent, propName = 'list') => {
       list && (
         <>
           {list.map(elementProps => (
-            <BaseComponent
+            <WrappedComponent
               key={either(elementProps.key)(keyGenerator(elementProps))}
               {...elementProps}
               {...copyProps}
@@ -28,7 +28,7 @@ const repeaterComponent = (BaseComponent, propName = 'list') => {
       )
     )
   }
-  return setDisplayName(`repeaterComponent(${getDisplayName(BaseComponent)})`)(RepeaterComponent)
+  return setDisplayName(`withRepeater(${getDisplayName(WrappedComponent)})`)(WithRepeater)
 }
 
-export default repeaterComponent
+export default withRepeater

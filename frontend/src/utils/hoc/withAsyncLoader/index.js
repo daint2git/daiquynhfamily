@@ -28,13 +28,13 @@ class LoaderProvider extends React.Component {
   }
 }
 
-const asyncLoader = task => {
+const withAsyncLoader = task => {
   const { Provider, Consumer } = React.createContext()
-  return Component => props => (
+  return WrappedComponent => props => (
     <LoaderProvider task={() => task(props)} Provider={Provider}>
-      <Consumer>{({ loaded }) => loaded && <Component {...props} />}</Consumer>
+      <Consumer>{({ loaded }) => loaded && <WrappedComponent {...props} />}</Consumer>
     </LoaderProvider>
   )
 }
 
-export default asyncLoader
+export default withAsyncLoader

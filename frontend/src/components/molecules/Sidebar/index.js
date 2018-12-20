@@ -9,7 +9,7 @@ import weddingCouple3 from 'svg/wedding/wedding-couple_3.svg'
 import weddingCouple4 from 'svg/wedding/wedding-couple_4.svg'
 import weddingCouple5 from 'svg/wedding/wedding-couple_5.svg'
 import weddingCouple6 from 'svg/wedding/wedding-couple_6.svg'
-import Repeater from 'utils/hoc/repeaterComponent'
+import withRepeater from 'utils/hoc/withRepeater'
 import cssModuleNameTag from 'utils/cssModuleNameTag'
 import styles from './styles.scss'
 
@@ -77,7 +77,7 @@ const ItemLink = ({ name, path, icon, currentPath }) => (
   </li>
 )
 
-const ItemsLink = Repeater(ItemLink)
+const ItemsLink = withRepeater(ItemLink)
 
 const Sidebar = props => (
   <div className={cssModules`root`}>
