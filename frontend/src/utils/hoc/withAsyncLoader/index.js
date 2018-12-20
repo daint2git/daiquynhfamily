@@ -1,5 +1,8 @@
 import React from 'react'
 
+import getDisplayName from '../utils/getDisplayName'
+import setDisplayName from '../utils/setDisplayName'
+
 class LoaderProvider extends React.Component {
   state = { loaded: false }
 
@@ -28,13 +31,14 @@ class LoaderProvider extends React.Component {
   }
 }
 
-const withAsyncLoader = task => {
+const withAsyncLoader = task => WrappedComponent => {
   const { Provider, Consumer } = React.createContext()
-  return WrappedComponent => props => (
+  const WithAsyncLoader = props => (
     <LoaderProvider task={() => task(props)} Provider={Provider}>
       <Consumer>{({ loaded }) => loaded && <WrappedComponent {...props} />}</Consumer>
     </LoaderProvider>
   )
+  return setDisplayName(`withAsyncLoader(${getDisplayName(WrappedComponent)})`)(WithAsyncLoader)
 }
 
 export default withAsyncLoader

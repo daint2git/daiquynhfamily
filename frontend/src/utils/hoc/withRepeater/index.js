@@ -1,4 +1,5 @@
 import React from 'react'
+
 import getDisplayName from '../utils/getDisplayName'
 import setDisplayName from '../utils/setDisplayName'
 import hash from './fnv-hash'
