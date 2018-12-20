@@ -13,7 +13,6 @@ const withRepeater = (WrappedComponent, propName = 'list') => {
   const WithRepeater = props => {
     const copyProps = { ...props }
     const list = copyProps[propName]
-    // delete prop with key is propName
     delete copyProps[propName]
     return (
       list && (
@@ -29,7 +28,10 @@ const withRepeater = (WrappedComponent, propName = 'list') => {
       )
     )
   }
-  return setDisplayName(`withRepeater(${getDisplayName(WrappedComponent)})`)(WithRepeater)
+  if (process.env.NODE_ENV !== 'production') {
+    return setDisplayName(`withRepeater(${getDisplayName(WrappedComponent)})`)(WithRepeater)
+  }
+  return WithRepeater
 }
 
 export default withRepeater

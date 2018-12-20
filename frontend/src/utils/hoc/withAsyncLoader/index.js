@@ -38,7 +38,10 @@ const withAsyncLoader = task => WrappedComponent => {
       <Consumer>{({ loaded }) => loaded && <WrappedComponent {...props} />}</Consumer>
     </LoaderProvider>
   )
-  return setDisplayName(`withAsyncLoader(${getDisplayName(WrappedComponent)})`)(WithAsyncLoader)
+  if (process.env.NODE_ENV !== 'production') {
+    return setDisplayName(`withAsyncLoader(${getDisplayName(WrappedComponent)})`)(WithAsyncLoader)
+  }
+  return WithAsyncLoader
 }
 
 export default withAsyncLoader
