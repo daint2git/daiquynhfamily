@@ -10,8 +10,7 @@ const origin =
   process.env.NODE_ENV === 'production'
     ? 'https://daiquynhfamily.herokuapp.com'
     : 'http://localhost:6969'
-// const outputPath = path.resolve(process.cwd(), '../frontend/build')
-const outputPath = path.join(__dirname, '../frontend/build')
+const outputPath = path.resolve(process.cwd(), 'frontend/build')
 
 app.use(cors({ credentials: true, origin }))
 app.use(cookieParser())
