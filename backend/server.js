@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const compression = require('compression')
 const { getFiles } = require('./connect.googleapis')
 
 const app = express()
@@ -12,6 +13,7 @@ const origin =
     : 'http://localhost:6969'
 
 app.use(cors({ credentials: true, origin }))
+app.use(compression())
 app.use(cookieParser())
 
 // Serve static files from the React frontend app
@@ -44,6 +46,21 @@ app.get('/api/chupbaida', handleClientCall('1ZhNYd6SpIBwpF8eIPUS22X-Z3sO_9bWH'))
 app.get('/api/chupstudio', handleClientCall('1EyYjk11tAwVwaZhjH6z5xuMFHbFbvOts'))
 app.get('/api/chupcuoile', handleClientCall('1X4vLvMCyXBM_iVQKOWg8m_y4JvwwPxB5'))
 app.get('/api/chupcuoitiec', handleClientCall('1KU7pMSg8VnQdQ7bUw5MvEZwckoVIhyB-'))
+
+// use the gzipped bundle
+app.get('*.js', (req, res, next) => {
+  req.url += '.gz'
+  res.set('Content-Encoding', 'gzip')
+  res.set('Content-Type', 'text/javascript')
+  next()
+})
+
+app.get('*.css', (req, res, next) => {
+  req.url += '.gz'
+  res.set('Content-Encoding', 'gzip')
+  res.set('Content-Type', 'text/css')
+  next()
+})
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
