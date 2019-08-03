@@ -9,7 +9,7 @@ import styles from './styles.scss'
 
 const cssModules = cssModuleNameTag(styles)
 
-export const Loading = ({ loading }) => (
+const Loading = ({ loading }) => (
   <div className={cssModules`root`} data-loading={loading}>
     <Overlay type="loading" />
     <div className={cssModules`icon`}>
