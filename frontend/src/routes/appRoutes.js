@@ -1,14 +1,16 @@
 import { Switch, Route } from 'react-router-dom'
 
-import TrangChu from 'components/pages/TrangChu'
-import ChupGhep from 'components/pages/ChupGhep'
-import ChupHoiAn from 'components/pages/ChupHoiAn'
-import ChupSanBay from 'components/pages/ChupSanBay'
-import ChupBaiDa from 'components/pages/ChupBaiDa'
-import ChupStudio from 'components/pages/ChupStudio'
-import ChupCuoiLe from 'components/pages/ChupCuoiLe'
-import ChupCuoiTiec from 'components/pages/ChupCuoiTiec'
-import NotFound from 'components/pages/NotFound'
+import withDynamicImport from 'utils/hoc/withDynamicImport'
+
+const TrangChu = withDynamicImport(() => import('../components/pages/TrangChu'))
+const ChupGhep = withDynamicImport(() => import('../components/pages/ChupGhep'))
+const ChupHoiAn = withDynamicImport(() => import('../components/pages/ChupHoiAn'))
+const ChupSanBay = withDynamicImport(() => import('../components/pages/ChupSanBay'))
+const ChupBaiDa = withDynamicImport(() => import('../components/pages/ChupBaiDa'))
+const ChupStudio = withDynamicImport(() => import('../components/pages/ChupStudio'))
+const ChupCuoiLe = withDynamicImport(() => import('../components/pages/ChupCuoiLe'))
+const ChupCuoiTiec = withDynamicImport(() => import('../components/pages/ChupCuoiTiec'))
+const NotFound = withDynamicImport(() => import('../components/pages/NotFound'))
 
 const appRoutes = () => (
   <Switch>
