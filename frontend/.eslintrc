@@ -149,6 +149,7 @@
       {
         "groups": ["builtin", "external", "internal", "parent", "sibling", "index"]
       }
-    ]
+    ],
+    "import/no-named-as-default": "off"
   }
 }
