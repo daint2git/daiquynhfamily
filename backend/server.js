@@ -11,13 +11,14 @@ const origin =
   process.env.NODE_ENV === 'production'
     ? 'https://daiquynhfamily.herokuapp.com'
     : 'http://localhost:6969'
+const outputPath = path.resolve(process.cwd(), 'frontend/build')
 
 app.use(cors({ credentials: true, origin }))
 app.use(compression())
 app.use(cookieParser())
 
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '../frontend/build')))
+app.use(express.static(outputPath))
 
 const handleClientCall = folderId => (req, res) => {
   const params = { folderId }
@@ -63,6 +64,6 @@ app.get('*.css', (req, res, next) => {
 })
 
 // Handles any requests that don't match the ones above
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
+app.get('*', (req, res) => res.sendFile(path.resolve(outputPath, 'index.html')))
 
 app.listen(port, () => console.log(`Server listening on port ${port}`))
