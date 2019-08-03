@@ -14,7 +14,7 @@ const ChupCuoiTiec = lazy(() => import('../components/pages/ChupCuoiTiec'))
 const NotFound = lazy(() => import('../components/pages/NotFound'))
 
 const appRoutes = () => (
-  <Suspense fallback={<Loading />}>
+  <Suspense fallback={<Loading loading />}>
     <Switch>
       <Route path="/" exact component={TrangChu} />
       <Route path="/chupghep" component={ChupGhep} />

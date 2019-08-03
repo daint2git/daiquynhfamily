@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Loading } from 'components/molecules/Loading'
+
 import getDisplayName from '../utils/getDisplayName'
 import setDisplayName from '../utils/setDisplayName'
 
@@ -35,7 +37,9 @@ const withAsyncLoader = task => WrappedComponent => {
   const { Provider, Consumer } = React.createContext()
   const WithAsyncLoader = props => (
     <LoaderProvider task={() => task(props)} Provider={Provider}>
-      <Consumer>{({ loaded }) => loaded && <WrappedComponent {...props} />}</Consumer>
+      <Consumer>
+        {({ loaded }) => (loaded ? <WrappedComponent {...props} /> : <Loading loading />)}
+      </Consumer>
     </LoaderProvider>
   )
   if (process.env.NODE_ENV !== 'production') {
